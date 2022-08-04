@@ -13,7 +13,9 @@ app.get("/", (req, res) => {
 });
 
 
+let stylePath = __dirname + "/public";
 
+app.use("/public", express.static(stylePath));
 
 
 
