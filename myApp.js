@@ -19,7 +19,9 @@ app.use("/public", express.static(stylePath));
 
 
 
-
+app.get("/json", (req, res) => {
+    res.json({"message": "Hello json"});
+  });
 
 
 
