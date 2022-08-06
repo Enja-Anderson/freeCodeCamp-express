@@ -7,6 +7,10 @@ var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+app.post("/name", (req, res) => {
+    res.json({name: req.body.first + " " + req.body.last});
+  });
+
 app.use((req, res, next) => {
     console.log(req.method + " " + req.path + " - " + req.id);
     next();
