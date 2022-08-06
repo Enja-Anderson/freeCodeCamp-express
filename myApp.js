@@ -31,18 +31,23 @@ app.get("/json", (req, res) => {
     }
   });
 
-  app.get("/now",(req, res, next) => {
-    req.time = new Date().toString();
-    next()
-  }, (req, res) => {
-    res.send({time: req.time});
-  });
+app.get("/now",(req, res, next) => {
+  req.time = new Date().toString();
+  next()
+}, (req, res) => {
+  res.send({time: req.time});
+});
 
-  app.get("/:word/echo", (req, res) => {
-    res.send({echo: req.params.word});
-  });
+app.get("/:word/echo", (req, res) => {
+  res.send({echo: req.params.word});
+});
 
-
+app.get("/name", (req, res) => {
+    var firstName = req.query.first;
+    var lastName = req.query.last;
+    var {first: firstName, last: lastName} = req.query;
+    res.json({name: `${firstName} ${lastName}`});
+});
 
 
 
