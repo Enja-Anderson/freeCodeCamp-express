@@ -1,22 +1,22 @@
 let express = require('express');
 let app = express();
+let absolutePath = __dirname + "/views/index.html";
+let stylePath = __dirname + "/public";
+var bodyParser = require("body-parser");
 
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 app.use((req, res, next) => {
     console.log(req.method + " " + req.path + " - " + req.id);
     next();
 })
 
-
-
-let absolutePath = __dirname + "/views/index.html";
-
 app.get("/", (req, res) => {
   res.sendFile(absolutePath);
 });
 
 
-let stylePath = __dirname + "/public";
 
 app.use("/public", express.static(stylePath));
 
